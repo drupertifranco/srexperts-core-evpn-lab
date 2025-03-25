@@ -1,8 +1,26 @@
 {
-    "image": "ghcr.io/srl-labs/containerlab/clab-devcontainer:0.55.0",
+    "name": "Containerlab Dev",
+    "build": {
+      "dockerfile": "../Dockerfile"
+    },
+    "runArgs": [
+      "--privileged",
+      "--network=host"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/clab/workspace,type=bind",
+    "workspaceFolder": "/home/clab/workspace",
+    "postCreateCommand": "echo 'Containerlab listo. Usa cd labs && sudo containerlab deploy -t simple-lab.clab.yml'",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    },
     "hostRequirements": {
-        "cpus": 4, 
-        "memory": "8gb",
-        "storage": "32gb"
+      "cpus": 4,
+      "memory": "8gb",
+      "storage": "32gb"
     }
-}
+  }
+  
